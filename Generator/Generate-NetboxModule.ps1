@@ -1,11 +1,15 @@
 param (
     [string]$OpenApiUrl = "$env:NETBOX_API_URL/api/schema/",
     [string]$OutputPath = "../Generated"
+    [switch]$ForceClean
 )
 
 # Create output folder if it doesn't exist
 if (-not (Test-Path $OutputPath)) {
     New-Item -ItemType Directory -Path $OutputPath | Out-Null
+} elseif ($ForceClean ) {
+    Write-Host "Cleaning output folder: $OutputPath" -ForegroundColor Yellow
+    Get-ChildItem -Path $OutputPath -Recurse -File | Remove-Item -Force
 }
 
 Write-Host "Loading OpenAPI specification from $OpenApiUrl..." -ForegroundColor Cyan
