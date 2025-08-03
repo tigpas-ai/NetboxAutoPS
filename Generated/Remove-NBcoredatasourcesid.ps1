@@ -1,8 +1,0 @@
-﻿function Remove-NBcoredatasourcesid {
-    param (
-        [hashtable]$Params = @{},
-        [hashtable]$Body = @{}
-    )
-
-    return Invoke-NBApiCall -Method 'DELETE' -Endpoint 'core/data-sources/{id}/' -Params $Params -Body $Body
-}

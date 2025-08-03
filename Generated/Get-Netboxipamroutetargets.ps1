@@ -1,0 +1,8 @@
+﻿function Get-Netboxipamroutetargets {
+    param (
+        [hashtable]$Params = @{},
+        [hashtable]$Body = @{}
+    )
+
+    return Invoke-NBApiCall -Method 'GET' -Endpoint 'm/route-targets/' -Params $Params -Body $Body
+}

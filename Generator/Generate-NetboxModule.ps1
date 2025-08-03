@@ -1,6 +1,6 @@
 param (
     [string]$OpenApiUrl = "$env:NETBOX_API_URL/api/schema/",
-    [string]$OutputPath = "../Generated"
+    [string]$OutputPath = "../Generated",
     [switch]$ForceClean
 )
 
