@@ -18,18 +18,16 @@ $paths = $spec.paths
 foreach ($endpointProp in $paths.PSObject.Properties) {
     $endpoint = $endpointProp.Name
     $methods = $endpointProp.Value.PSObject.Properties
-    Write-Host "DEBUG: ENDPOINT"
 
     foreach ($method in $methods) {
-        Write-Host "DEBUG: METHOD"
         $httpMethod = $method.Name.ToUpper()
         $functionPrefix = switch ($httpMethod) {
-            "GET"    { "Get-NB" }
-            "POST"   { "New-NB" }
-            "PUT"    { "Set-NB" }
-            "PATCH"  { "Update-NB" }
-            "DELETE" { "Remove-NB" }
-            default  { "Invoke-NB" }
+            "GET"    { "Get-Netbox" }
+            "POST"   { "New-Netbox" }
+            "PUT"    { "Set-Netbox" }
+            "PATCH"  { "Update-Netbox" }
+            "DELETE" { "Remove-Netbox" }
+            default  { "Invoke-Netbox" }
         }
 
         $resourceName = ($endpoint -replace '^/api/', '') -replace '/$', '' -replace '/', '_'
